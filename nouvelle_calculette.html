@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>nouvelle_calculette</title>
+    <link href='https://fonts.googleapis.com/css?family=Shadows+Into+Light' rel='stylesheet' type='text/css'>
+    <style>
+    #calculette {
+      position: relative;
+      width: 255px;
+      background-color: #E2239C;
+      padding : 10px;
+    }
+    button {
+      width: 50px;
+      height: 50px;
+      margin : 5px;
+      color: #FFF;
+      background-color: #A197A0;
+      font-family: 'Shadows Into Light', cursive;
+      font-weight: bold;
+      font-size: 2em;
+    }
+    #resultat{
+      background-color: #FFF;
+      width:242px;
+      height:50px;
+      margin-left: 5px;
+      margin-bottom: 5px;
+      text-align: right;
+      font-size: 2em;
+      font-family: 'Shadows Into Light', cursive;
+    }
+    #clear {
+      width:242px;
+      height:50px;
+      background-color: #3F373C;
+      color: #FFF;
+    }
+    #egal {
+      width: 115px;
+      background-color: #3F373C;
+      color: #FFF;
+    }
+    #addition {
+      background-color: #3F373C;
+      color: #FFF;
+    }
+    #soustraction {
+      background-color: #3F373C;
+      color: #FFF;
+    }
+    #multiplication {
+      background-color: #3F373C;
+      color: #FFF;
+    }
+    #division {
+      background-color: #3F373C;
+      color: #FFF;
+    }
+
+    </style>
+  </head>
+  <body>
+<div id="calculette">
+
+  <div id= resultat></div>
+
+  <button onclick="nettoie()" id= "clear">CLEAR</button>
+  <div id="ligne1">
+      <button onclick="entree(1)">1</button>
+      <button onclick="entree(2)">2</button>
+      <button onclick="entree(3)">3</button>
+      <button onclick="addition()" id="addition">+</button>
+  </div>
+  <div id= "ligne2">
+      <button onclick="entree(4)" >4</button>
+      <button onclick="entree(5)">5</button>
+      <button onclick="entree(6)">6</button>
+      <button onclick="soustraction()" id="soustraction">-</button>
+  </div>
+  <div id= "ligne3">
+      <button onclick="entree(7)">7</button>
+      <button onclick="entree(8)">8</button>
+      <button onclick="entree(9)">9</button>
+      <button onclick="multiplication()" id="multiplication">*</button>
+  </div>
+  <div id="ligne4">
+      <button onclick="entree(0)">0</button>
+      <button onclick="resultat()" id="egal">=</button>
+      <button onclick="division()" id="division">/</button>
+  </div>
+
+</div>
+
+<script>
+  var entreeUtilisateur1 = [];
+  var entreeUtilisateur2 = [];
+  var signe = [];
+
+function entree(i) {
+  document.getElementById("resultat").textContent = document.getElementById("resultat").textContent + i;
+}
+
+function addition() {
+  entreeUtilisateur1.push(document.getElementById("resultat").textContent);
+  signe.push(document.getElementById("addition").textContent);
+  console.log(signe);
+  console.log(entreeUtilisateur1);
+  document.getElementById("resultat").textContent = null;
+}
+function soustraction() {
+  entreeUtilisateur1.push(document.getElementById("resultat").textContent);
+  signe.push(document.getElementById("soustraction").textContent);
+  console.log(signe);
+  document.getElementById("resultat").textContent = null;
+}
+function multiplication() {
+  entreeUtilisateur1.push(document.getElementById("resultat").textContent);
+  signe.push(document.getElementById("multiplication").textContent);
+  console.log(signe);
+  document.getElementById("resultat").textContent = null;
+}
+function division() {
+  entreeUtilisateur1.push(document.getElementById("resultat").textContent);
+  signe.push(document.getElementById("division").textContent);
+  console.log(signe);
+  document.getElementById("resultat").textContent = null;
+}
+
+function nettoie() {
+  document.getElementById("resultat").textContent = null;
+  entreeUtilisateur1 = [];
+  entreeUtilisateur2 = [];
+  signe = [];
+  console.log(entreeUtilisateur1);
+  console.log(entreeUtilisateur2);
+  console.log(signe);
+}
+
+function resultat() {
+  entreeUtilisateur2.push(document.getElementById("resultat").textContent);
+  if (signe[0] == "+") {
+    document.getElementById("resultat").textContent = Number(entreeUtilisateur1) + Number(entreeUtilisateur2);
+  }
+  else if (signe[0] == "-") {
+    document.getElementById("resultat").textContent = Number(entreeUtilisateur1) - Number(entreeUtilisateur2);
+  }
+  else if (signe[0] == "*") {
+    document.getElementById("resultat").textContent = Number(entreeUtilisateur1) * Number(entreeUtilisateur2);
+  }
+  else {
+    document.getElementById("resultat").textContent = Number(entreeUtilisateur1) / Number(entreeUtilisateur2);
+  }
+}
+
+
+
+
+
+
+
+// entreeUtilisateur1.push(document.getElementById("resultat").textContent);
+
+</script>
+
+  </body>
+</html>
